@@ -1,0 +1,75 @@
+﻿mol,ID
+Water,C7732185
+Nitrogen,C7727379
+Hydrogen,C1333740
+Deuterium,C7782390
+Oxygen,C7782447
+Fluorine,C7782414
+Carbon monoxide,C630080
+Carbon dioxide,C124389
+Dinitrogen monoxide,C10024972
+Deuterium oxide,C7789200
+Methanol,C67561
+Methane,C74828
+Ethane,C74840
+Ethene,C74851
+Propane,C74986
+Propene,C115071
+Propyne,C74997
+Cyclopropane,C75194
+Butane,C106978
+Isobutane,C75285
+Pentane,C109660
+2-Methylbutane,C78784
+"2,2-Dimethylpropane",C463821
+Hexane,C110543
+2-Methylpentane,C107835
+Cyclohexane,C110827
+Heptane,C142825
+Octane,C111659
+Nonane,C111842
+Decane,C124185
+Dodecane,C112403
+Helium,C7440597
+Neon,C7440019
+Argon,C7440371
+Krypton,C7439909
+Xenon,C7440633
+Ammonia,C7664417
+Nitrogen trifluoride,C7783542
+Trichlorofluoromethane (R11),C75694
+Dichlorodifluoromethane (R12),C75718
+Chlorotrifluoromethane (R13),C75729
+Tetrafluoromethane (R14),C75730
+Dichlorofluoromethane (R21),C75434
+"Methane, chlorodifluoro- (R22)",C75456
+Trifluoromethane (R23),C75467
+"Methane, difluoro- (R32)",C75105
+Fluoromethane (R41),C593533
+"1,1,2-Trichloro-1,2,2-trifluoroethane (R113)",C76131
+"1,2-Dichloro-1,1,2,2-tetrafluoroethane (R114)",C76142
+Chloropentafluoroethane (R115),C76153
+Hexafluoroethane (R116),C76164
+"Ethane, 2,2-dichloro-1,1,1-trifluoro- (R123)",C306832
+"Ethane, 1-chloro-1,2,2,2-tetrafluoro- (R124)",C2837890
+"Ethane, pentafluoro- (R125)",C354336
+"Ethane, 1,1,1,2-tetrafluoro- (R134a)",C811972
+"1,1-Dichloro-1-fluoroethane (R141b)",C1717006
+"1-Chloro-1,1-difluoroethane (R142b)",C75683
+"Ethane, 1,1,1-trifluoro- (R143a)",C420462
+"Ethane, 1,1-difluoro- (R152a)",C75376
+Octafluoropropane (R218),C76197
+"1,1,1,2,3,3,3-Heptafluoropropane (R227ea)",C431890
+"1,1,1,2,3,3-Hexafluoropropane (R236ea)",C431630
+"1,1,1,3,3,3-Hexafluoropropane (R236fa)",C690391
+"1,1,2,2,3-Pentafluoropropane (R245ca)",C679867
+"1,1,1,3,3-Pentafluoropropane (R245fa)",C460731
+Octafluorocyclobutane (RC318),C115253
+Benzene,C71432
+Toluene,C108883
+Decafluorobutane,C355259
+Dodecafluoropentane,C678262
+Sulfur dioxide,C7446095
+Hydrogen sulfide,C7783064
+Sulfur hexafluoride,C2551624
+Carbonyl sulfide,C463581
