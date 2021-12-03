@@ -1,4 +1,3 @@
-import sklearn
 from sklearn import preprocessing
 import pandas as pd
 import matplotlib.pyplot as plt

@@ -1,13 +1,10 @@
-import requests
+from requests import get
 from bs4 import BeautifulSoup
+from time import sleep
+from random import random
 import pandas as pd
-import time
-import random
 import numpy as np
 
-mols_long = pd.read_csv("IDs.csv")
-mols = mols_long
-numMols = mols.shape[0]
 
 def str2Range(rangeString):
     stringWithTo = rangeString[55 : rangeString.find("MPa", ) - 1]
@@ -24,14 +21,10 @@ def getRange(ID):
     rangeString = soup.find_all("li")[15].get_text()
     return str2Range(rangeString)
 
-print("fetching pressure ranges")
-mols["Prange"] = [getRange(ID) for ID in mols["ID"]]
-
-URL1  = "https://webbook.nist.gov/cgi/fluid.cgi?P="
-URL2 = "&TLow=&THigh=&TInc=&Digits=5&ID="
-URL3 = "&Action=Load&Type=IsoBar&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm&RefState=NBP"
-
 def makeURL(P, ID):
+    URL1  = "https://webbook.nist.gov/cgi/fluid.cgi?P="
+    URL2 = "&TLow=&THigh=&TInc=&Digits=5&ID="
+    URL3 = "&Action=Load&Type=IsoBar&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm&RefState=NBP"
     return URL1+str(P)+URL2+ID+URL3
 
 def getPropTable(ID, Prange):
@@ -63,16 +56,24 @@ def getMW(ID):
     lis = soup.find_all("li")
     return float(lis[16].text[lis[16].text.rfind(" ")+1:])
 
-print("fetching properties")
-props = [table2Props(getPropTable(ID, Prange)) for ID, Prange in zip(mols["ID"], mols["Prange"])]
+if __name__ == "__main__":
+    mols_long = pd.read_csv("IDs.csv")
+    mols = mols_long
+    numMols = mols.shape[0]
 
-print("fetching molecular weights")
-mols["MW"] = [getMW(ID) for ID in mols["ID"]]
-mols["Tc"] = [prop[0] for prop in props]
-mols["Pc"] = [prop[1] for prop in props]
-mols["Dc"] = [prop[2] for prop in props]
-mols["Af"] = [prop[3] for prop in props]
-mols["nbp"] = [prop[4] for prop in props]
-mols["dipole"] = [prop[5] for prop in props]
+    print("fetching pressure ranges")
+    mols["Prange"] = [getRange(ID) for ID in mols["ID"]]
 
-pd.to_pickle(mols, "mols.pkl")
+    print("fetching properties")
+    props = [table2Props(getPropTable(ID, Prange)) for ID, Prange in zip(mols["ID"], mols["Prange"])]
+
+    print("fetching molecular weights")
+    mols["MW"] = [getMW(ID) for ID in mols["ID"]]
+    mols["Tc"] = [prop[0] for prop in props]
+    mols["Pc"] = [prop[1] for prop in props]
+    mols["Dc"] = [prop[2] for prop in props]
+    mols["Af"] = [prop[3] for prop in props]
+    mols["nbp"] = [prop[4] for prop in props]
+    mols["dipole"] = [prop[5] for prop in props]
+
+    pd.to_pickle(mols, "mols.pkl", protocol=4)
