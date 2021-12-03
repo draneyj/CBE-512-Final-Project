@@ -15,8 +15,8 @@ def str2Range(rangeString):
 def getRange(ID):
     URL1 = "https://webbook.nist.gov/cgi/fluid.cgi?ID="
     URL2 = "&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm&Type=IsoBar&RefState=NBP&Action=Page"
-    page = requests.get(URL1+ID+URL2)
-    time.sleep(random.random() + 0.25)
+    page = get(URL1+ID+URL2)
+    sleep(random.random() + 0.25)
     soup = BeautifulSoup(page.content, "html.parser")
     rangeString = soup.find_all("li")[15].get_text()
     return str2Range(rangeString)
@@ -29,8 +29,8 @@ def makeURL(P, ID):
 
 def getPropTable(ID, Prange):
     P = np.round(np.mean(Prange), decimals=2)
-    page = requests.get(makeURL(P, ID))
-    time.sleep(random.random() + 0.25)
+    page = get(makeURL(P, ID))
+    sleep(random.random() + 0.25)
     tables = pd.read_html(page.text)
     proptable = tables[2]
     return proptable
@@ -50,8 +50,8 @@ def table2Props(pt):
     return [Tc, Pc, Dc, Af, nbp, dipole]
 
 def getMW(ID):
-    page = requests.get("https://webbook.nist.gov/cgi/cbook.cgi?ID="+ID)
-    time.sleep(random.random() + 0.25)
+    page = get("https://webbook.nist.gov/cgi/cbook.cgi?ID="+ID)
+    sleep(random.random() + 0.25)
     soup = BeautifulSoup(page.content, "html.parser")
     lis = soup.find_all("li")
     return float(lis[16].text[lis[16].text.rfind(" ")+1:])

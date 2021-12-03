@@ -1,11 +1,9 @@
 from scrape import makeURL
 from random import random
-from time import sleep
-from requests import get
 import pandas as pd
 
 def getStateDF(ID,P):
-    page = requests.get(makeURL(P, ID))
+    page = get(makeURL(P, ID))
     sleep(random() + 0.25)
     tables = pd.read_html(page.text)
     Ptable = tables[0]
