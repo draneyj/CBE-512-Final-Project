@@ -6,8 +6,11 @@ import numpy as np
 import pandas as pd
 
 def getStateDf(ID,P):
-    page = get(makeURL(P, ID))
-    sleep(random() + 0.25)
+    try: # lazy handling request errors
+        page = get(makeURL(P, ID))
+    except:
+        page = get(makeURL(P, ID))
+    sleep(0.5 * (random() + 0.25))
     tables = pd.read_html(page.text)
     Ptable = tables[0]
     return Ptable
@@ -32,4 +35,4 @@ if __name__ == "__main__":
         smallDf = getManyStates(mol, 300)
         smallDfs.append(addMolRows(mol, smallDf))
         bigDf = pd.concat(smallDfs) # I know this is slow I'm just lazy
-        pd.to_pickle(bigDf,'data.pkl') # I want to save every time in case something happens...
+        pd.to_pickle(bigDf,'bigData.pkl') # I want to save every time in case something happens...
