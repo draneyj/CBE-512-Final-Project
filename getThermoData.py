@@ -29,7 +29,7 @@ if __name__ == "__main__":
     smallDfs = []
     for i, mol in mols.iterrows():
         print("getting", mol['mol'], "...")
-        smallDf = getManyStates(mol, 1)
+        smallDf = getManyStates(mol, 300)
         smallDfs.append(addMolRows(mol, smallDf))
         bigDf = pd.concat(smallDfs) # I know this is slow I'm just lazy
         pd.to_pickle(bigDf,'data.pkl') # I want to save every time in case something happens...
