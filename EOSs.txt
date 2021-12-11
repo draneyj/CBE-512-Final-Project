@@ -1,7 +1,0 @@
-EOS comparisons:
-
-Ideal Gas Law?
-Van der Waals (VDW) 1873: critical properties
-Soave modification of Redlich-Kwong (SRK) 1972: critical properties + accentric factor
-Peng-Robinson (PR) 1976: critical properties + accentric factor
-Elliott, Suresh, Donohue (ESD) 1990: critical properties + accentric factor
